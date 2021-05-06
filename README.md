@@ -33,12 +33,12 @@ __________________
 BluetoothLEService
 serviceConnection
 gattUpdateReceiver
-displayGattServices --------------->    LockControlActivity  || GPSLocationActivity
-__________________                      ___________________     ___________________
-displayGattServices()                     gattConnection           gattConnection
-        |                               ___________________     ____________________        
-        |                                   sendLock()              viewLocation()
-        |                                   sendUnlock()
+displayGattServices      
+__________________                      
+displayGattServices()
+        |                           
+        |    
+        |                                
         |
         V
 BluetoothLEService
@@ -50,3 +50,9 @@ initialize()
 broadcastUpdate()
 close()
 
+
+LockControlActivity  || GPSLocationActivity
+gattConnection           gattConnection
+___________________     ____________________        
+sendLock()              viewLocation()
+sendUnlock()
