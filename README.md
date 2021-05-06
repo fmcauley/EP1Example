@@ -18,10 +18,35 @@ The EP1’s GATT server will have a Services for:
     3. Will allow for data to be sent as well as read
 
 
-## Design
-When the app opens it will scan for near by devices
-When a device(s) are found a list will be populated
-When an item from the list is selected a new activity/fragment will open:
-If Unlock/Lock is selected those features will be accessible 
-Else if GPS is selected the coordinate data will be displayed 
+## Design / UML
+EP1ScanActivity
+________________
+BluetoothLeScanner
+BluetoothAdapter
+________________
+scanLeDevice()
+scanCallBack()
+----------------
+
+EP1ControlActivity                         
+__________________    
+BluetoothLEService
+serviceConnection
+gattUpdateReceiver
+displayGattServices --------------->    LockControlActivity  || GPSLocationActivity
+__________________                      ___________________     ___________________
+displayGattServices()                     gattConnection           gattConnection
+        |                               ___________________     ____________________        
+        |                                   sendLock()              viewLocation()
+        |                                   sendUnlock()
+        |
+        V
+BluetoothLEService
+___________________
+BluetoothManager
+BluetoothAdapter
+________________
+initialize()
+broadcastUpdate()
+close()
 
